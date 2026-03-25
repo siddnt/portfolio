@@ -111,10 +111,11 @@ export function AnimatedCounter({
 export function SpotlightCard({
     children,
     className = "",
+    ...props
 }: {
     children: React.ReactNode;
     className?: string;
-}) {
+} & React.HTMLAttributes<HTMLDivElement>) {
     const cardRef = useRef<HTMLDivElement>(null);
 
     const handleMouseMove = useCallback((e: React.MouseEvent) => {
@@ -131,6 +132,7 @@ export function SpotlightCard({
             ref={cardRef}
             className={`spotlight-card ${className}`}
             onMouseMove={handleMouseMove}
+            {...props}
         >
             {children}
         </div>

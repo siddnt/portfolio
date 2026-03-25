@@ -61,14 +61,14 @@ export const DATA = {
       },
       LeetCode: {
         name: "LeetCode",
-        url: "https://leetcode.com/sidd_ntt",
+        url: "https://leetcode.com/siddnt",
         icon: Icons.leetcode,
         contact: true,
         navbar: true,
       },
       Codeforces: {
         name: "Codeforces",
-        url: "https://codeforces.com/profile/sidd_ntt",
+        url: "https://codeforces.com/profile/siddnt",
         icon: Icons.codeforces,
         contact: true,
         navbar: true,
@@ -80,11 +80,18 @@ export const DATA = {
         contact: true,
         navbar: false,
       },
+      Resume: {
+        name: "Resume",
+        url: "/resume.pdf",
+        icon: Icons.resume,
+        contact: true,
+        navbar: true,
+      },
     },
   },
   leetcode: {
-    username: "sidd_ntt",
-    profileUrl: "https://leetcode.com/sidd_ntt",
+    username: "siddnt",
+    profileUrl: "https://leetcode.com/siddnt",
     description:
       "I actively practice problem-solving on LeetCode to enhance my algorithmic thinking and coding skills. Check out my profile to see my progress and solutions!",
   },
@@ -94,7 +101,7 @@ export const DATA = {
       title: "Knight",
       stat: "Top 2.97%",
       color: "amber" as const,
-      profileUrl: "https://leetcode.com/sidd_ntt",
+      profileUrl: "https://leetcode.com/siddnt",
       certificateUrl: "", // Add certificate URL here
       description: "Achieved Knight badge for consistent problem-solving performance",
     },
@@ -103,17 +110,17 @@ export const DATA = {
       title: "Specialist",
       stat: "Max Rating 1422",
       color: "cyan" as const,
-      profileUrl: "https://codeforces.com/profile/sidd_ntt",
+      profileUrl: "https://codeforces.com/profile/siddnt",
       certificateUrl: "", // Add certificate URL here
       description: "Specialist rank on Codeforces competitive programming platform",
     },
     {
       platform: "ACM ICPC",
-      title: "ICPC Asia West Regionalist",
+      title: "Amritapuri Region Rank 235",
       stat: "2025",
       color: "violet" as const,
-      profileUrl: "", // Add ICPC profile/team URL here
-      certificateUrl: "", // Add certificate URL here
+      profileUrl: "",
+      certificateUrl: "/icpc_certificate.pdf",
       description: "Qualified for ICPC Asia West Regional round",
     },
     {
@@ -121,8 +128,8 @@ export const DATA = {
       title: "Global Rank 3387",
       stat: "Global Prelims",
       color: "magenta" as const,
-      profileUrl: "", // Add IICPC results URL here
-      certificateUrl: "", // Add certificate URL here
+      profileUrl: "",
+      certificateUrl: "/iicpc_certificate.png",
       description: "Ranked in IEEE International Inter-Collegiate Programming Contest",
     },
   ],
@@ -165,11 +172,11 @@ export const DATA = {
         },
         {
           type: "Live Demo",
-          href: "#",
+          href: "https://fitsync-client-goxq.onrender.com/",
           icon: Icons.globe,
         },
       ],
-      image: "/projects/fitsync.png",
+      image: "/projects/fitsync_actual.png",
       video: "",
     },
     {
@@ -198,11 +205,11 @@ export const DATA = {
         },
         {
           type: "Live Demo",
-          href: "#",
+          href: "https://anon-one-drab.vercel.app/",
           icon: Icons.globe,
         },
       ],
-      image: "/projects/ama-app.png",
+      image: "/projects/anon_actual.png",
       video: "",
     },
     {
