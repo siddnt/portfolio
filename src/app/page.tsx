@@ -21,8 +21,7 @@ const PROJECT_METRICS = [
 const ACHIEVEMENT_DATES = ["2026.02", "2025.11", "2025.09", "2025.08"];
 const ACHIEVEMENT_ICONS = ["emoji_events", "star", "emoji_events", "military_tech"];
 
-const TICKER_TEXT =
-  "BUILT FITSYNC (10K+ REQ/S) /// KNIGHT ON LEETCODE /// ICPC REGIONALIST /// SPECIALIST ON CODEFORCES /// AUTHENTICATION FLOW O(1) /// SOFTWARE ENGINEER /// ";
+
 
 const STACK_MATRIX = {
   languages: { items: ["TypeScript", "Java", "C++", "JavaScript"], icon: "code" },
@@ -64,16 +63,6 @@ export default function Page() {
 
           <h1 className="brutal-hero-title">I BUILD THINGS THAT SCALE</h1>
 
-          <div className="brutal-marquee-wrap">
-            <div className="brutal-marquee">
-              <span>{TICKER_TEXT}</span>
-              <span>{TICKER_TEXT}</span>
-              <span>{TICKER_TEXT}</span>
-              <span>{TICKER_TEXT}</span>
-              <span>{TICKER_TEXT}</span>
-              <span>{TICKER_TEXT}</span>
-            </div>
-          </div>
         </section>
 
         {/* ===== WORK / PROJECTS — full width, seamless ===== */}

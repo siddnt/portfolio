@@ -1153,3 +1153,135 @@
 .brutal-cursor-enabled * {
   cursor: none !important;
 }
+
+/* =======================================
+   MOBILE RESPONSIVENESS FIXES
+   ======================================= */
+@media (max-width: 768px) {
+
+  /* Navbar */
+  .brutal-nav {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .brutal-nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Hero */
+  .brutal-hero {
+    padding-top: 40px;
+  }
+
+  .brutal-status {
+    position: relative;
+    top: 0;
+    margin-bottom: 32px;
+  }
+
+  .brutal-hero-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    word-break: keep-all;
+    hyphens: auto;
+  }
+
+  .brutal-marquee-wrap {
+    height: 40px;
+  }
+
+  .brutal-marquee {
+    font-size: 11px;
+  }
+
+  /* Work */
+  .brutal-work-side {
+    padding: 32px 16px;
+  }
+
+  .brutal-work-side h2 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .brutal-project-row {
+    padding: 20px 16px;
+  }
+
+  .brutal-project-title {
+    font-size: 20px;
+  }
+
+  .brutal-project-metrics {
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 10px;
+  }
+
+  .brutal-tech-tags {
+    justify-content: flex-start;
+  }
+
+  .brutal-project-detail {
+    padding: 24px 16px;
+  }
+
+  /* Compete */
+  .brutal-compete-inner {
+    padding: 32px 16px;
+  }
+
+  .brutal-compete-head h2 {
+    font-size: clamp(2.5rem, 12vw, 4.5rem);
+  }
+
+  .brutal-ledger-row {
+    padding: 16px;
+  }
+
+  /* Stack */
+  .brutal-stack-inner-wrap {
+    padding: 32px 16px;
+  }
+
+  .brutal-stack-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .brutal-stack-head h2 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .brutal-stack-status-inner {
+    justify-content: center;
+  }
+
+  /* Contact */
+  .brutal-contact-main {
+    padding: 40px 16px;
+  }
+
+  .brutal-contact-main h2 {
+    font-size: clamp(3rem, 14vw, 5rem);
+    margin-bottom: 32px;
+  }
+
+  .brutal-contact-cta {
+    padding: 16px 24px;
+    font-size: 1.1rem;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .brutal-contact-foot {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
