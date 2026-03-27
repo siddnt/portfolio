@@ -115,7 +115,7 @@ export const DATA = {
       description: "Specialist rank on Codeforces competitive programming platform",
     },
     {
-      platform: "ACM ICPC",
+      platform: "ICPC",
       title: "Amritapuri Region Rank 235",
       stat: "2025",
       color: "violet" as const,
@@ -124,7 +124,7 @@ export const DATA = {
       description: "Qualified for ICPC Asia West Regional round",
     },
     {
-      platform: "IEEE IICPC",
+      platform: "IICPC",
       title: "Global Rank 3387",
       stat: "Global Prelims",
       color: "magenta" as const,

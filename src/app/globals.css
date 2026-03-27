@@ -508,6 +508,29 @@
   border-color: #0A0A0A;
 }
 
+/* ===== Work Footer ===== */
+.brutal-work-foot {
+  padding: 24px 32px;
+  border-top: 2px solid #0A0A0A;
+  background: #EAEAEA;
+  text-align: right;
+  font-family: var(--font-display), 'Space Grotesk', sans-serif;
+}
+
+.brutal-work-foot a {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #737373;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.1s;
+}
+
+.brutal-work-foot a:hover {
+  color: #0A0A0A;
+}
+
 /* ===== Expanded Project Detail ===== */
 .brutal-project-detail {
   padding: 32px 20px;

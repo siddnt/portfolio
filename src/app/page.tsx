@@ -22,7 +22,7 @@ const ACHIEVEMENT_DATES = ["2026.02", "2025.11", "2025.09", "2025.08"];
 const ACHIEVEMENT_ICONS = ["emoji_events", "star", "emoji_events", "military_tech"];
 
 const TICKER_TEXT =
-  "/// SOFTWARE ENGINEER /// SYSTEMS DESIGN /// FULL STACK /// DATA ARCHITECTURE";
+  "BUILT FITSYNC (10K+ REQ/S) /// KNIGHT ON LEETCODE /// ICPC REGIONALIST /// SPECIALIST ON CODEFORCES /// AUTHENTICATION FLOW O(1) /// SOFTWARE ENGINEER /// ";
 
 const STACK_MATRIX = {
   languages: { items: ["TypeScript", "Java", "C++", "JavaScript"], icon: "code" },
@@ -48,9 +48,10 @@ export default function Page() {
           <div className="brutal-nav-brand">{DATA.fullName}</div>
           <div className="brutal-nav-links">
             <a href="#projects">[WORK]</a>
-            <a href="#achievements">[COMPETE]</a>
+            <a href="#achievements">[ACHIEVEMENTS]</a>
             <a href="#stack">[STACK]</a>
             <a href="#contact">[CONTACT]</a>
+            <a href={DATA.contact.social.Resume.url} target="_blank" rel="noreferrer">[RESUME]</a>
           </div>
         </nav>
 
@@ -160,6 +161,12 @@ export default function Page() {
                   );
                 })}
               </div>
+
+              <div className="brutal-work-foot">
+                <a href={DATA.contact.social.GitHub.url} target="_blank" rel="noreferrer">
+                  VIEW FULL ARCHIVE ON GITHUB →
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -171,7 +178,7 @@ export default function Page() {
         >
           <div className="brutal-compete-inner">
             <header className="brutal-compete-head">
-              <h2>Compete</h2>
+              <h2>Achievements</h2>
             </header>
 
             <div className="brutal-ledger">
