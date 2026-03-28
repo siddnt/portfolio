@@ -1,287 +1,329 @@
-import { HackathonCard } from "@/components/hackathon-card";
-import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { DATA } from "@/data/resume";
-import Link from "next/link";
-import Markdown from "react-markdown";
-import { UrlObject } from "url";
+"use client";
 
-const BLUR_FADE_DELAY = 0.01;
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { DATA } from "@/data/resume";
+import { BrutalCursor } from "@/components/brutal-cursor";
+import { useState } from "react";
+
+const ParticleField = dynamic(
+  () => import("@/components/three/particle-field").then((mod) => mod.ParticleField),
+  { ssr: false }
+);
+
+const PROJECT_METRICS = [
+  { left: "THROUGHPUT: 10k+ req/s", right: "LATENCY: <120ms" },
+  { left: "AUTH FLOW: O(1)", right: "UPTIME: 99.9%" },
+  { left: "WS GATEWAY: 10k", right: "PIPELINE: STABLE" },
+  { left: "SCALE: HIGH", right: "OPS: OPTIMIZED" },
+];
+
+const ACHIEVEMENT_DATES = ["2026.02", "2025.11", "2025.09", "2025.08"];
+const ACHIEVEMENT_ICONS = ["emoji_events", "star", "emoji_events", "military_tech"];
+
+
+
+const STACK_MATRIX = {
+  languages: { items: ["TypeScript", "Java", "C++", "JavaScript"], icon: "code" },
+  databases: { items: ["PostgreSQL", "MongoDB", "Redis", "-"], icon: "database" },
+  infrastructure: { items: ["Node.js", "Express", "Next.js", "-"], icon: "cloud" },
+  tools: { items: ["Git", "GitHub", "Tailwind CSS", "Redux Toolkit"], icon: "build" },
+};
 
 export default function Page() {
+  const social = DATA.contact.social;
+  const [openProject, setOpenProject] = useState<number | null>(null);
+
   return (
-    <main className="flex flex-col min-h-[100dvh]">
-      <section id="hero">
-        <div className="mx-auto w-full max-w-3xl space-y-8">
-          <div className="gap-2 flex justify-between flex-col-reverse md:flex-row">
-            <div className="justify-center flex-col flex flex-1 space-y-1.5">
-              {/* <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className=""
-                yOffset={8}
-                text={}
-              /> */}
-              <p className="mx-auto md:mx-0 text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl/none">
-                Hi, I&apos;m {DATA.name} 👋
-              </p>
-              <Markdown className="text-center md:text-start max-w-[600px] text-pretty font-sans md:text-lg">
-                {DATA.description}
-              </Markdown>
-            </div>
-            <div className="relative size-36 mx-auto">
-              {/* Professional tech visual */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 backdrop-blur-sm shadow-2xl"></div>
-              <div className="absolute inset-2 rounded-full bg-gradient-to-br from-blue-600/20 to-cyan-500/20 animate-pulse"></div>
-              
-              {/* Modern code symbol */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-16 h-16 border-2 border-blue-500/60 rounded-lg rotate-45 animate-pulse"></div>
-                  <div className="absolute inset-0 flex items-center justify-center text-blue-400 font-mono text-2xl font-bold">
-                    &lt;/&gt;
-                  </div>
-                </div>
+    <div className="brutal-site min-h-screen">
+      <BrutalCursor />
+      <div className="brutal-three-layer" aria-hidden>
+        <ParticleField />
+      </div>
+
+      <div className="brutal-content">
+        {/* ===== NAV ===== */}
+        <nav className="brutal-nav">
+          <div className="brutal-nav-brand">{DATA.fullName}</div>
+          <div className="brutal-nav-links">
+            <a href="#projects">[WORK]</a>
+            <a href="#achievements">[ACHIEVEMENTS]</a>
+            <a href="#stack">[STACK]</a>
+            <a href="#contact">[CONTACT]</a>
+            <a href={DATA.contact.social.Resume.url} target="_blank" rel="noreferrer">[RESUME]</a>
+          </div>
+        </nav>
+
+        {/* ===== HERO ===== */}
+        <section id="hero" className="brutal-hero">
+          <div className="brutal-status">
+            <span className="brutal-dot" />
+            AVAILABLE FOR HIRE
+          </div>
+
+          <h1 className="brutal-hero-title">I BUILD THINGS THAT SCALE</h1>
+
+        </section>
+
+        {/* ===== WORK / PROJECTS — full width, seamless ===== */}
+        <section id="projects" className="brutal-section">
+          <div className="brutal-work-layout">
+            <aside className="brutal-work-side">
+              <div className="brutal-work-side-inner">
+                <h2 aria-hidden>Work</h2>
               </div>
-              
-              {/* Subtle accent elements */}
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-500/60 rounded-full animate-ping"></div>
-              <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-cyan-500/60 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-              
-              {/* Professional glow */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/10 to-cyan-500/10 blur-xl"></div>
+            </aside>
+
+            <div className="brutal-work-main">
+              <div className="brutal-work-head">
+                <span>SYSTEM DESIGNATION</span>
+                <span>CORE METRICS</span>
+                <span>TECH STACK</span>
+              </div>
+
+              <div className="brutal-work-rows">
+                {DATA.projects.map((project, idx) => {
+                  const metrics =
+                    PROJECT_METRICS[idx] ||
+                    PROJECT_METRICS[PROJECT_METRICS.length - 1];
+                  const isOpen = openProject === idx;
+
+                  return (
+                    <div key={project.title}>
+                      <div
+                        className="brutal-project-row"
+                        onClick={() => setOpenProject(isOpen ? null : idx)}
+                      >
+                        <div className="brutal-project-title">
+                          <span className="brutal-plus">
+                            {isOpen ? "−" : "+"}
+                          </span>
+                          <span>{project.title}</span>
+                        </div>
+                        <div className="brutal-project-metrics">
+                          <span>{metrics.left}</span>
+                          <span>{metrics.right}</span>
+                        </div>
+                        <div className="brutal-tech-tags">
+                          {project.technologies.slice(0, 3).map((tech) => (
+                            <span key={tech}>{tech}</span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {isOpen && (
+                        <div className="brutal-project-detail">
+                          <div className="brutal-detail-summary">
+                            <h4>Architecture Summary</h4>
+                            <p>{project.description}</p>
+                          </div>
+                          <div className="brutal-detail-actions">
+                            {project.links.map((link) => (
+                              <a
+                                key={link.type}
+                                href={link.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className={`btn-brutal ${link.type.includes("Live") ||
+                                  link.type.includes("Demo")
+                                  ? "btn-brutal-dark"
+                                  : "btn-brutal-light"
+                                  }`}
+                              >
+                                <span
+                                  className="material-symbols-outlined"
+                                  style={{ fontSize: 18 }}
+                                >
+                                  {link.type.includes("GitHub")
+                                    ? "code"
+                                    : link.type.includes("API")
+                                      ? "description"
+                                      : "rocket_launch"}
+                                </span>
+                                {link.type}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="brutal-work-foot">
+                <a href={DATA.contact.social.GitHub.url} target="_blank" rel="noreferrer">
+                  VIEW FULL ARCHIVE ON GITHUB →
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section id="about" className="pt-6">
-        <h2 className="text-xl font-bold">About</h2>
-        {/* <BlurFade delay={BLUR_FADE_DELAY}> */}
-        <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-          {DATA.summary}
-        </Markdown>
-        {/* </BlurFade> */}
-      </section>
-      <section id="skills" className="pt-6">
-        <div className="flex min-h-0 flex-col gap-y-6">
-          <BlurFade delay={BLUR_FADE_DELAY}>
-            <div className="text-center space-y-2">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
-                Skills & Technologies
-              </h2>
-              <p className="text-muted-foreground text-sm">
-                Technologies I work with to build amazing applications
-              </p>
-            </div>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY + 0.1}>
-            <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-              {DATA.skills.map((skill, id) => (
-                <div
-                  key={skill}
-                  className="group relative"
-                  style={{ animationDelay: `${id * 0.1}s` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-cyan-400/20 to-blue-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-                  <Badge 
-                    className="relative bg-background/80 backdrop-blur-sm border border-border/50 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 text-sm font-medium px-4 py-2 cursor-default group-hover:scale-105"
-                    variant="outline"
+        </section>
+
+        {/* ===== COMPETE — full width ===== */}
+        <section
+          id="achievements"
+          className="brutal-section brutal-compete-wrap"
+        >
+          <div className="brutal-compete-inner">
+            <header className="brutal-compete-head">
+              <h2>Achievements</h2>
+            </header>
+
+            <div className="brutal-ledger">
+              <div className="brutal-ledger-head">
+                <span>DATE</span>
+                <span>EVENT</span>
+                <span>RANK</span>
+                <span>IMPACT</span>
+              </div>
+
+              {DATA.achievements.map((achievement, idx) => {
+                const isHighlight = idx < 2;
+                const iconName = ACHIEVEMENT_ICONS[idx] || "emoji_events";
+
+                return (
+                  <div
+                    key={achievement.platform + achievement.title}
+                    className="brutal-ledger-row"
                   >
-                    {skill}
-                  </Badge>
-                </div>
-              ))}
-            </div>
-          </BlurFade>
-        </div>
-      </section>
-      <section id="projects" className="pt-6">
-        <div className="space-y-8 w-full">
-          <BlurFade delay={BLUR_FADE_DELAY * 11}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  My Projects
-                </div>
-                <h2 className="text-xl font-bold tracking-tighter sm:text-3xl">
-                  Check out my latest work
-                </h2>
-                <p className="text-muted-foreground text-sm/relaxed xl:text-base/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications. Here are a few of my
-                  favorites.
-                </p>
-              </div>
-            </div>
-          </BlurFade>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
-            {DATA.projects.map((project, id) => (
-              <BlurFade
-                key={project.title}
-                delay={BLUR_FADE_DELAY * 12 + id * 0.05}
-              >
-                <ProjectCard
-                  href={project.href}
-                  key={project.title}
-                  title={project.title}
-                  description={project.description}
-                  dates={project.dates}
-                  tags={project.technologies}
-                  image={project.image}
-                  video={project.video}
-                  links={project.links}
-                />
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section id="leetcode" className="pt-6">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">LeetCode</h2>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 6}>
-            <div className="flex items-center justify-between p-4 bg-background/30 border border-border/50 rounded-lg hover:border-blue-500/50 transition-all duration-300">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-orange-500 rounded-md flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">LC</span>
-                </div>
-                <div>
-                  <h3 className="font-medium">@{DATA.leetcode.username}</h3>
-                  <p className="text-muted-foreground text-xs">Problem-solving practice</p>
-                </div>
-              </div>
-              <Link 
-                href={DATA.leetcode.profileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:text-blue-600 text-sm font-medium transition-colors duration-200"
-              >
-                View Profile →
-              </Link>
-            </div>
-          </BlurFade>
-        </div>
-      </section>
-      <section id="education" className="pt-6">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-bold">Education</h2>
-          </BlurFade>
-          {DATA.education.map((education, id) => (
-            <BlurFade
-              key={education.school}
-              delay={BLUR_FADE_DELAY * 8 + id * 0.05}
-            >
-              <ResumeCard
-                key={education.school}
-                href={education.href}
-                icon={education.icon}
-                logoUrl={education.logoUrl}
-                altText={education.school}
-                title={education.school}
-                subtitle={education.degree}
-                period={`${education.start} - ${education.end}`}
-              />
-            </BlurFade>
-          ))}
-        </div>
-      </section>
-      {/* <section id="hackathons" className="pt-6">
-        <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  Hackathons
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  I like building things
-                </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  During my time in university, I attended{" "}
-                  {DATA.hackathons.length}+ hackathons. People from around the
-                  country would come together and build incredible things in 2-3
-                  days. It was eye-opening to see the endless possibilities
-                  brought to life by a group of motivated and passionate
-                  individuals.
-                </p>
-              </div>
-            </div>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
-              {DATA.hackathons.map((project, id) => (
-                <BlurFade
-                  key={project.title + project.dates}
-                  delay={BLUR_FADE_DELAY * 15 + id * 0.05}
-                >
-                  <HackathonCard
-                    title={project.title}
-                    description={project.description}
-                    location={project.location}
-                    dates={project.dates}
-                    image={project.image}
-                    links={project.links}
-                  />
-                </BlurFade>
-              ))}
-            </ul>
-          </BlurFade>
-        </div>
-      </section> */}
-      <section id="contact" className="pt-6">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-7">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  Contact
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Get in Touch
-                </h2>
-                <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;m always open to new opportunities and collaborations.
-                  Feel free to reach out to me if you have any questions or just
-                  want to chat.
-                </p>
-              </div>
-              <div className="flex justify-center">
-                <BlurFade delay={0.1} inView>
-                  <div className="flex gap-5 flex-wrap">
-                    {Object.entries(DATA.contact.social)
-                      .filter(([_, social]) => social.contact)
-                      .map(([name, social], index) => (
-                        <>
-                          <Tooltip key={index}>
-                            <TooltipTrigger asChild>
-                              <Link href={social.url as unknown as UrlObject}>
-                                <social.icon className="size-7" />
-                              </Link>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>{name}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </>
-                      ))}
+                    <span className="brutal-muted">
+                      {ACHIEVEMENT_DATES[idx] || "2025.01"}
+                    </span>
+                    <span className="brutal-event">{achievement.platform}</span>
+                    <span>
+                      {isHighlight ? (
+                        <span className="brutal-rank-badge">
+                          <span
+                            className="material-symbols-outlined"
+                            style={{
+                              fontVariationSettings: "'FILL' 1",
+                              fontSize: 16,
+                            }}
+                          >
+                            {iconName}
+                          </span>
+                          {achievement.title}
+                        </span>
+                      ) : (
+                        <span className="brutal-rank-plain">
+                          {achievement.title}
+                        </span>
+                      )}
+                    </span>
+                    <span>{achievement.description}</span>
                   </div>
-                </BlurFade>
+                );
+              })}
+            </div>
+
+            <div className="brutal-status-line">
+              <span>
+                STATUS: <strong>ONLINE</strong>
+              </span>
+              <span>
+                <i /> SYS_READY
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== STACK — full width ===== */}
+        <section id="stack" className="brutal-section brutal-stack-wrap">
+          <div className="brutal-stack-inner-wrap">
+            <div className="brutal-stack-head">
+              <h2>Stack</h2>
+              <span>SYSTEM MANIFEST V2.4</span>
+            </div>
+
+            <div className="brutal-stack-grid">
+              <div className="brutal-stack-inner">
+                {Object.entries(STACK_MATRIX).map(([key, { items, icon }]) => (
+                  <div key={key} className="brutal-stack-col">
+                    <div className="brutal-stack-col-head">
+                      <span>
+                        {key.charAt(0).toUpperCase() + key.slice(1)}
+                      </span>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontVariationSettings: "'FILL' 0" }}
+                      >
+                        {icon}
+                      </span>
+                    </div>
+                    {items.map((item, i) => (
+                      <div
+                        key={item + i}
+                        className={`brutal-stack-cell ${item === "-" ? "brutal-stack-cell-empty" : ""
+                          }`}
+                      >
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
-          </BlurFade>
-        </div>
-      </section>
-    </main>
+
+            <div className="brutal-stack-status">
+              <div className="brutal-stack-status-inner">
+                <div className="brutal-stack-status-dot" />
+                <span className="brutal-stack-status-text">
+                  ALL SYSTEMS NOMINAL
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== CONTACT — full width, no floating box ===== */}
+        <section id="contact" className="brutal-contact-section">
+          <div className="brutal-contact-box">
+            <div className="brutal-contact-grid" />
+
+            <div className="brutal-contact-main">
+              <h2>
+                SYSTEM
+                <br />
+                READY.
+              </h2>
+
+              <a
+                href={`mailto:${DATA.contact.email}`}
+                className="brutal-contact-cta"
+              >
+                <span>INITIATE CONTACT</span>
+                <span
+                  className="material-symbols-outlined"
+                  style={{ fontWeight: 700, fontSize: 28 }}
+                >
+                  terminal
+                </span>
+              </a>
+            </div>
+
+            <footer className="brutal-contact-foot">
+              <span>© {DATA.fullName}</span>
+              <div className="brutal-contact-foot-links">
+                {Object.entries(social)
+                  .filter(([name, info]) => ["GitHub", "LinkedIn", "LeetCode", "Codeforces"].includes(name) && info.url)
+                  .map(([name, info]) => (
+                    <a
+                      key={name}
+                      href={info.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={name}
+                      className="brutal-social-icon-btn"
+                    >
+                      <info.icon className="brutal-social-svg" />
+                    </a>
+                  ))}
+              </div>
+            </footer>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 }

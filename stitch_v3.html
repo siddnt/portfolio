@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Siddhant Chouksey // ARCHITECT.IO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#002020",
+              "primary-container": "#008B8B",
+              "surface-variant": "#2a3030",
+              "on-background": "#e0e3e3",
+              "surface-container-high": "#1e2424",
+              "outline": "#899393",
+              "on-tertiary": "#003737",
+              "inverse-primary": "#006a6a",
+              "background": "#0b0f0f",
+              "surface": "#0b0f0f",
+              "error": "#ffb4ab",
+              "on-secondary-fixed-variant": "#3f4949",
+              "primary": "#4ddada",
+              "surface-container-highest": "#2a3030",
+              "on-tertiary-container": "#002020",
+              "surface-container-low": "#171d1d",
+              "secondary-fixed": "#cce8e8",
+              "on-surface-variant": "#bfc9c9",
+              "on-tertiary-fixed-variant": "#005050",
+              "primary-fixed": "#80f4f4",
+              "tertiary-container": "#004f4f",
+              "surface-dim": "#0b0f0f",
+              "surface-tint": "#4ddada",
+              "surface-container-lowest": "#060a0a",
+              "on-primary": "#003737",
+              "tertiary": "#4ddada",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#005050",
+              "on-tertiary-fixed": "#002020",
+              "secondary-container": "#3f4949",
+              "tertiary-fixed-dim": "#4ddada",
+              "on-primary-container": "#002020",
+              "inverse-surface": "#e0e3e3",
+              "secondary-fixed-dim": "#b0cccc",
+              "on-secondary-container": "#d0e4e4",
+              "secondary": "#b0cccc",
+              "on-secondary-fixed": "#051f1f",
+              "on-secondary": "#1b3232",
+              "surface-bright": "#343a3a",
+              "on-error": "#690005",
+              "outline-variant": "#3f4949",
+              "primary-fixed-dim": "#4ddada",
+              "tertiary-fixed": "#80f4f4",
+              "surface-container": "#1a1f1f",
+              "on-surface": "#e0e3e3",
+              "inverse-on-surface": "#2d3131",
+              "error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["JetBrains Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #060a0a;
+            color: #e0e3e3;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(42, 48, 48, 0.4);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(77, 218, 218, 0.1);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(0, 139, 139, 0.15);
+            border-top-color: rgba(77, 218, 218, 0.4);
+        }
+        .light-leak {
+            background: radial-gradient(circle at top left, rgba(0, 139, 139, 0.08) 0%, transparent 50%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/40 backdrop-blur-xl border-b border-primary/10 shadow-[0_0_20px_rgba(0,139,139,0.05)]">
+<div class="flex justify-between items-center px-8 h-16 max-w-full mx-auto">
+<div class="text-lg font-black tracking-tighter text-on-surface uppercase">ARCHITECT.IO</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="font-sans tracking-tight uppercase text-xs font-semibold text-primary border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="font-sans tracking-tight uppercase text-xs font-semibold text-outline hover:text-on-surface transition-colors" href="#projects">Projects</a>
+<a class="font-sans tracking-tight uppercase text-xs font-semibold text-outline hover:text-on-surface transition-colors" href="#competitive">Competitions</a>
+<a class="font-sans tracking-tight uppercase text-xs font-semibold text-outline hover:text-on-surface transition-colors" href="#stack">Stack</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-primary/5 transition-all duration-300 rounded-full active:opacity-80 active:scale-95">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</button>
+</div>
+</div>
+</header>
+<main class="relative">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col justify-center px-8 md:px-24 overflow-hidden pt-16">
+<div class="absolute inset-0 light-leak pointer-events-none"></div>
+<div class="relative z-10 max-w-4xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-full mb-6 border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label text-[10px] uppercase tracking-widest text-primary">System Status: Active</span>
+</div>
+<h2 class="font-body text-on-surface-variant text-lg md:text-xl font-light mb-2">Hi, I'm Siddhant Chouksey.</h2>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tight text-on-surface leading-tight mb-8">
+                    Architecting <span class="text-primary-container">High-Performance</span> Backend Infrastructures.
+                </h1>
+<div class="flex flex-wrap gap-4 mt-12">
+<a class="p-3 bg-surface-container-high hover:bg-surface-container-highest transition-all duration-300 rounded-lg group border border-outline-variant/10" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="code">code</span>
+<span class="sr-only">GitHub</span>
+</a>
+<a class="p-3 bg-surface-container-high hover:bg-surface-container-highest transition-all duration-300 rounded-lg group border border-outline-variant/10" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="hub">hub</span>
+<span class="sr-only">LinkedIn</span>
+</a>
+<a class="p-3 bg-surface-container-high hover:bg-surface-container-highest transition-all duration-300 rounded-lg group border border-outline-variant/10" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="military_tech">military_tech</span>
+<span class="sr-only">LeetCode</span>
+</a>
+<a class="p-3 bg-surface-container-high hover:bg-surface-container-highest transition-all duration-300 rounded-lg group border border-outline-variant/10" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="leaderboard">leaderboard</span>
+<span class="sr-only">Codeforces</span>
+</a>
+</div>
+</div>
+<!-- Background Aesthetic -->
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-2/3 opacity-20 pointer-events-none hidden lg:block">
+<div class="relative w-full h-full">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent blur-3xl"></div>
+<div class="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full shadow-[0_0_15px_rgba(77,218,218,0.8)]"></div>
+<div class="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_10px_rgba(77,218,218,0.6)]"></div>
+<div class="absolute top-3/4 left-1/3 w-2.5 h-2.5 bg-primary rounded-full shadow-[0_0_20px_rgba(77,218,218,1)]"></div>
+<svg class="w-full h-full text-outline-variant/20" fill="none" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" r="80" stroke="currentColor" stroke-dasharray="4 4" stroke-width="0.5"></circle>
+<circle cx="100" cy="100" r="40" stroke="currentColor" stroke-width="0.5"></circle>
+<path d="M100 20V180M20 100H180" stroke="currentColor" stroke-width="0.2"></path>
+</svg>
+</div>
+</div>
+</section>
+<!-- Projects Grid -->
+<section class="px-8 md:px-24 py-24 bg-surface-container-lowest" id="projects">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
+<h2 class="font-headline text-3xl font-bold text-on-surface">Selected_Architectures</h2>
+<p class="font-label text-xs text-outline tracking-tighter uppercase">03 / Production_Ready</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="glass-card glow-hover group flex flex-col rounded-xl overflow-hidden transition-all duration-500">
+<div class="h-48 relative overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Modern sleek minimalist software interface with clean typography and cyan data visualizations on a dark digital dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmfMzJaPbxDeG6f9y-zVbrpgbgqijBKPfxpEEsE5nZXHFPQ4sTvCQqSMZgD1svJnDONh45T4SuLcD5OYAqOSka521aPDvO3M-O6JW-8zGoYkhSijlcY-2rcLEl-IZH7YGsQTWl-msUl9U-HPxrQOV-3H_NgwuJoMZiqIATvewRpgGEms723LvL7z9QRyAShXlxTFMDvXHPojDBu5BTiZidsnFhch0LPlDq_dgcE_ph_p2j0PEn_mZoK0CtTcinmcFGvzptAQNiePCy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="font-label text-[10px] text-primary mb-2 uppercase tracking-widest">SaaS // Fitness</div>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-4">FitSync</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">Multi-tenant fitness synchronization engine with real-time biometric data processing and cloud scaling.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="link">link</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="database">database</span>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="glass-card glow-hover group flex flex-col rounded-xl overflow-hidden transition-all duration-500">
+<div class="h-48 relative overflow-hidden bg-surface-container-high flex items-center justify-center">
+<div class="absolute inset-0 opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+<img class="w-full h-full object-cover" data-alt="Abstract dark mesh background with glowing cyan and emerald lines representing a complex neural network or digital AI grid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCddEFEjU3OoTXw4TYiI45OZICW0aky9BKT9DICAnh9vk4BxhPlaqynqyJHYOp60SaMD2OdcJjKCSfcdiWeeeF1pcK2KTyy04NMVEbzY6SbFpVT0fcJKHFQMweKWvQVBx398LvTY5rmfUTZEotaE83K_LvofHGwRDgKVxK8wJ7wyzM-Kwa_7w9xh3rt1dRRmhX2j-fe4XO1WVky4v_R7Ng6dtIigIZKZrGIlFzLIuUIN4DoilunXKmQVriHa10hTJy50USIfqKZTVKs"/>
+</div>
+<span class="material-symbols-outlined text-5xl text-primary/40 group-hover:text-primary transition-colors duration-500" data-icon="psychology">psychology</span>
+</div>
+<div class="p-8">
+<div class="font-label text-[10px] text-primary mb-2 uppercase tracking-widest">AI // Messaging</div>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-4">Anon</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">Secure, AI-driven anonymous messaging platform utilizing end-to-end encryption and automated moderation.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="lock">lock</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="auto_awesome">auto_awesome</span>
+</div>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="glass-card glow-hover group flex flex-col rounded-xl overflow-hidden transition-all duration-500">
+<div class="h-48 relative overflow-hidden bg-background p-6 flex items-center justify-center">
+<div class="font-label text-[10px] text-primary/70 leading-relaxed overflow-hidden opacity-50 group-hover:opacity-100 transition-opacity">
+<pre><code>GET /api/v1/stream {
+  node: "0x4F2A",
+  latency: "14ms",
+  status: "SYNCHRONIZED"
+}</code></pre>
+</div>
+</div>
+<div class="p-8">
+<div class="font-label text-[10px] text-primary mb-2 uppercase tracking-widest">Backend // API</div>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-4">Streamstem</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">High-throughput streaming API gateway capable of managing 10k+ concurrent WebSocket connections.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="settings_input_component">settings_input_component</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="bolt">bolt</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats & Skills -->
+<section class="px-8 md:px-24 py-24 bg-surface relative" id="competitive">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,139,139,0.03)_0%,_transparent_70%)] pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+<!-- Metrics -->
+<div>
+<h2 class="font-headline text-3xl font-bold text-on-surface mb-12">System_Metrics</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-6 bg-surface-container-low border border-outline-variant/10 rounded-lg">
+<div class="font-label text-[10px] uppercase text-outline mb-2">Algorithm Proficiency</div>
+<div class="flex items-baseline gap-2">
+<span class="font-label text-2xl font-bold text-primary">Knight</span>
+<span class="font-label text-xs text-on-surface-variant">Top 2.97%</span>
+</div>
+<div class="mt-4 text-[10px] font-label text-outline-variant">SOURCE: LEETCODE</div>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant/10 rounded-lg">
+<div class="font-label text-[10px] uppercase text-outline mb-2">Competitive Rank</div>
+<div class="flex items-baseline gap-2">
+<span class="font-label text-2xl font-bold text-primary">1422</span>
+<span class="font-label text-xs text-on-surface-variant">Specialist</span>
+</div>
+<div class="mt-4 text-[10px] font-label text-outline-variant">SOURCE: CODEFORCES</div>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant/10 rounded-lg">
+<div class="font-label text-[10px] uppercase text-outline mb-2">Regional Recognition</div>
+<div class="flex items-baseline gap-2">
+<span class="font-label text-xl font-bold text-primary tracking-tighter">ICPC Asia West</span>
+</div>
+<div class="mt-4 text-[10px] font-label text-outline-variant">REGIONALIST '25</div>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant/10 rounded-lg">
+<div class="font-label text-[10px] uppercase text-outline mb-2">Global Standing</div>
+<div class="flex items-baseline gap-2">
+<span class="font-label text-2xl font-bold text-primary">3387</span>
+<span class="font-label text-xs text-on-surface-variant">IICPC Rank</span>
+</div>
+<div class="mt-4 text-[10px] font-label text-outline-variant">GLOBAL LEADERBOARD</div>
+</div>
+</div>
+</div>
+<!-- Skills -->
+<div id="stack">
+<h2 class="font-headline text-3xl font-bold text-on-surface mb-12">The_Stack</h2>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">C++</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">Java</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">Node.js</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">Express</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">PostgreSQL</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">MongoDB</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">React</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">Next.js</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">Docker</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">Kubernetes</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full font-label text-xs text-on-surface-variant hover:text-primary hover:border-primary/40 border border-outline-variant/20 transition-all cursor-default">AWS</span>
+</div>
+<div class="mt-16 p-8 border-l-2 border-primary/20 bg-surface-container-lowest">
+<p class="font-body text-on-surface-variant italic leading-relaxed">
+                            "Specializing in the development of low-latency distributed systems and robust API architectures. I focus on code efficiency and mechanical sympathy to deliver world-class backend solutions."
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-12 px-8 border-t border-surface-container-high">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-full">
+<div class="flex items-center gap-4">
+<span class="text-on-surface font-bold uppercase tracking-tighter">ARCHITECT.IO</span>
+<span class="h-4 w-[1px] bg-outline/20"></span>
+<p class="font-mono text-[10px] uppercase tracking-widest text-outline">© 2024 ARCHITECTURAL_MONOLITH // STACK_V1.1.0</p>
+</div>
+<div class="flex gap-8">
+<a class="font-mono text-[10px] uppercase tracking-widest text-outline-variant hover:text-primary transition-colors hover:translate-y-[-2px]" href="#">GitHub</a>
+<a class="font-mono text-[10px] uppercase tracking-widest text-outline-variant hover:text-primary transition-colors hover:translate-y-[-2px]" href="#">LinkedIn</a>
+<a class="font-mono text-[10px] uppercase tracking-widest text-outline-variant hover:text-primary transition-colors hover:translate-y-[-2px]" href="#">LeetCode</a>
+<a class="font-mono text-[10px] uppercase tracking-widest text-outline-variant hover:text-primary transition-colors hover:translate-y-[-2px]" href="#">Codeforces</a>
+</div>
+</div>
+</footer>
+</body></html>

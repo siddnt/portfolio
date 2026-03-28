@@ -20,7 +20,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        sans: ["var(--font-display)", "Space Grotesk", ...fontFamily.sans],
+        display: ["var(--font-display)", "Space Grotesk", ...fontFamily.sans],
+        mono: ["var(--font-mono)", "JetBrains Mono", ...fontFamily.mono],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -29,8 +31,8 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#0df2c4",
+          foreground: "#0A0A0A",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -56,11 +58,23 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Brutalist palette
+        "brutal-black": "#0A0A0A",
+        "brutal-gray": "#EAEAEA",
+        "brutal-surface": "#FAFAFA",
+        "brutal-muted": "#737373",
+        "background-light": "#f5f8f8",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        brutal: "6px 6px 0px #0A0A0A",
+        "brutal-sm": "4px 4px 0px #0A0A0A",
+        "brutal-hover": "0px 0px 0px #0A0A0A",
+        "brutal-primary": "6px 6px 0px #0df2c4",
       },
       keyframes: {
         "accordion-down": {
@@ -71,10 +85,20 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        marquee: "marquee 25s linear infinite",
+        blink: "blink 1s step-end infinite",
       },
     },
   },
